@@ -19,11 +19,11 @@ class _OilScreenState extends State<OilScreen> {
   // Variable Lokal (Default Value)
   int _currentKm = 0;
   int _lastEngineOilChangeKm = 0;
-  int _engineOilInterval = 2000;
+  final int _engineOilInterval = 2000;
   bool _isEngineLocked = false;
 
   int _lastGearOilChangeKm = 0;
-  int _gearOilInterval = 6000;
+  final int _gearOilInterval = 6000;
   bool _isGearLocked = false;
 
   bool _isLoading = true; // Indikator loading

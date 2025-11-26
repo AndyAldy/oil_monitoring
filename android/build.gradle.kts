@@ -1,8 +1,6 @@
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+repositories {
+    google()
+    mavenCentral()
 }
 
 val newBuildDir: Directory =
@@ -15,8 +13,10 @@ subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
-subprojects {
-    project.evaluationDependsOn(":app")
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
 }
 
 tasks.register<Delete>("clean") {
