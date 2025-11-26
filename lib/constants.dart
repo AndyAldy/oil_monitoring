@@ -10,6 +10,7 @@ class AppColors {
   static const Color textSecondary = Colors.white70;
 }
 
+// TEMA GELAP (Sudah ada sebelumnya)
 final ThemeData roadSyncTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: AppColors.background,
   primaryColor: AppColors.primary,
@@ -19,4 +20,18 @@ final ThemeData roadSyncTheme = ThemeData.dark().copyWith(
     centerTitle: true,
   ),
   cardColor: AppColors.surface,
+);
+
+final ThemeData roadSyncLightTheme = ThemeData.light().copyWith(
+  scaffoldBackgroundColor: const Color(0xFFF5F5F5), // Putih abu-abu
+  primaryColor: AppColors.primary,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.white,
+    elevation: 0,
+    centerTitle: true,
+    iconTheme: IconThemeData(color: Colors.black), // Ikon jadi hitam
+    titleTextStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+  ),
+  cardColor: Colors.white, // Kartu jadi putih
+  iconTheme: const IconThemeData(color: Colors.black87),
 );
