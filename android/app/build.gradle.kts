@@ -30,9 +30,7 @@ android {
 
     defaultConfig {
         applicationId = "com.oil_monitoring.app"
-        
-        // 👇 UPDATE: Ubah minSdk ke 21 agar lebih stabil dengan Firebase & Multidex
-        minSdk = flutter.minSdkVersion 
+        minSdk = 21
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -50,11 +48,11 @@ android {
         }
     }
 
-    buildTypes {
+buildTypes {
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
-            // isMinifyEnabled = false // Pastikan false dulu untuk menghindari error R8
-            // isShrinkResources = false
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }
