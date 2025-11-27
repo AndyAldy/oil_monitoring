@@ -20,12 +20,13 @@ pluginManagement {
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
     
-    // 👇 PERBAIKAN: Update ke versi 8.9.1 (Sesuai permintaan Error)
+    // 👇 UPDATE: Menggunakan versi 8.9.1 sesuai permintaan error log
     id("com.android.application") version "8.9.1" apply false
     
-    // 👇 PERBAIKAN: Update Kotlin ke 2.1.0 (Sesuai Warning)
+    // 👇 UPDATE: Menggunakan versi 2.1.0 sesuai warning
     id("org.jetbrains.kotlin.android") version "2.1.0" apply false
     
+    // 👇 PENTING: Plugin Google Services
     id("com.google.gms.google-services") version "4.4.4" apply false
 }
 

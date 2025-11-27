@@ -4,7 +4,7 @@ import java.io.FileInputStream
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("com.google.gms.google-services")
+    id("com.google.gms.google-services") // Plugin Firebase
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -30,18 +30,19 @@ android {
 
     defaultConfig {
         applicationId = "com.oil_monitoring.app"
-        minSdk = flutter.minSdkVersion
+        
+        // 👇 UPDATE: Ubah minSdk ke 21 agar lebih stabil dengan Firebase & Multidex
+        minSdk = flutter.minSdkVersion 
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         
-        // 👇 PERBAIKAN PENTING: Wajib true untuk Firebase
+        // 👇 WAJIB AKTIF: Untuk aplikasi dengan banyak method (Firestore)
         multiDexEnabled = true 
     }
 
     signingConfigs {
         create("release") {
-            // Pastikan file key.properties kamu benar-benar ada isinya
             keyAlias = keystoreProperties["keyAlias"] as String? ?: "androiddebugkey"
             keyPassword = keystoreProperties["keyPassword"] as String? ?: "android"
             storeFile = if (keystoreProperties["storeFile"] != null) file(keystoreProperties["storeFile"] as String) else null
@@ -52,17 +53,18 @@ android {
     buildTypes {
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
-            // isMinifyEnabled = true // Biarkan false dulu untuk debugging
+            // isMinifyEnabled = false // Pastikan false dulu untuk menghindari error R8
+            // isShrinkResources = false
         }
     }
 }
 
 dependencies {
-    // Import Firebase BoM
+    // Firebase BoM (Mengatur versi otomatis)
     implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
     implementation("com.google.firebase:firebase-analytics")
     
-    // 👇 PERBAIKAN PENTING: Tambahkan library Multidex
+    // 👇 LIBRARY WAJIB: Multidex
     implementation("androidx.multidex:multidex:2.0.1")
 }
 
