@@ -19,8 +19,10 @@ pluginManagement {
 
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
-    id("com.android.application") version "8.9.1" apply false
-    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
+    id("com.android.application") version "8.7.0" apply false // Saya sesuaikan ke versi stabil yang umum, atau gunakan 8.9.1 jika kamu yakin SDK-nya support
+    id("org.jetbrains.kotlin.android") version "1.9.22" apply false // Versi Kotlin disesuaikan agar kompatibel dengan Flutter
+    // 👇 INI YANG KURANG: Mendefinisikan versi Google Services
+    id("com.google.gms.google-services") version "4.4.4" apply false
 }
 
 include(":app")
